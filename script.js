@@ -100,6 +100,10 @@ document.querySelector('.btn_save').addEventListener('click', () => {
     }
     if (secondModalValue >= 0) {
         secondsSpan.textContent = padSeconds(secondModalValue);
+
+        if (minuteModalValue === "") {
+            minutesSpan.textContent = '0';
+        }
     }
 })
 
@@ -119,6 +123,10 @@ document.querySelector('.btn_save').addEventListener('click', () => {
         }
         if(secondModalValue) {
             secondsSpan.textContent = padSeconds(secondModalValue);
+
+            if (minuteModalValue === "") {
+                minutesSpan.textContent = '0';
+            }
         }
         else {
             secondsSpan.textContent = '00';
@@ -132,12 +140,37 @@ document.querySelectorAll(".form-control").forEach((element) => element.addEvent
     let secondValue = document.querySelector("#seconds").value;
     console.log(minuteValue, secondValue);
 
-    if ((minuteValue >= 0 && minuteValue <= 60 && minuteValue !== '') || (secondValue >= 0 && secondValue <= 60 && secondValue !== '')) {
-        document.querySelector(".btn_save").disabled = false;
-        document.querySelectorAll(".is-invalid").forEach((element) => element.classList.remove("is-invalid"));
+    if (minuteValue !== '' && secondValue !== '') {
+        if ((minuteValue >= 0 && minuteValue < 60) && (secondValue >= 0 && secondValue < 60)) {
+            document.querySelector(".btn_save").disabled = false;
+            document.querySelectorAll(".is-invalid").forEach((element) => element.classList.remove("is-invalid"));
+        }
+        else {
+            document.querySelector(".btn_save").disabled = true;
+            document.querySelectorAll(".form-control").forEach((element) => element.classList.add("is-invalid"));
+        }
+    }
+    else if (minuteValue !== '' || secondValue !== '') {
+        if ((minuteValue >= 0 && minuteValue < 60) || (secondValue >= 0 && secondValue < 60)) {
+            document.querySelector(".btn_save").disabled = false;
+            document.querySelectorAll(".is-invalid").forEach((element) => element.classList.remove("is-invalid"));
+        }
+        else {
+            document.querySelector(".btn_save").disabled = true;
+            document.querySelectorAll(".form-control").forEach((element) => element.classList.add("is-invalid"));
+        }
     }
     else {
         document.querySelector(".btn_save").disabled = true;
-        document.querySelectorAll(".form-control").forEach((element) => element.classList.add("is-invalid"));
+        document.querySelectorAll(".form-control").forEach((element) => element.classList.remove("is-invalid"));
     }
+
+    // if ((minuteValue >= 0 && minuteValue <= 60 && minuteValue !== '') || (secondValue >= 0 && secondValue <= 60 && secondValue !== '')) {
+    //     document.querySelector(".btn_save").disabled = false;
+    //     document.querySelectorAll(".is-invalid").forEach((element) => element.classList.remove("is-invalid"));
+    // }
+    // else {
+    //     document.querySelector(".btn_save").disabled = true;
+    //     document.querySelectorAll(".form-control").forEach((element) => element.classList.add("is-invalid"));
+    // }
 }))
