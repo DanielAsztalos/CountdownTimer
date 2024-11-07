@@ -38,17 +38,17 @@
                         <form id="change">
                             <div class="mb-3">
                                 <label for="minutes" class="form-label">Minutes</label>
-                                <input type="number" class="form-control" id="minutes" min="0" max="60">
+                                <input type="number" class="form-control is-invalid" id="minutes" min="0" max="60">
                             </div>
                             <div class="mb-3">
                                 <label for="seconds" class="form-label">Seconds</label>
-                                <input type="number" class="form-control" id="seconds" min="0" max="60">
+                                <input type="number" class="form-control is-invalid" id="seconds" min="0" max="60">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary btn_modal" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary btn_save btn_modal"data-bs-dismiss="modal">Save changes</button>
+                        <button type="button" class="btn btn-primary btn_save btn_modal"data-bs-dismiss="modal" disabled>Save changes</button>
                     </div>
                 </div>
             </div>

@@ -126,3 +126,18 @@ document.querySelector('.btn_save').addEventListener('click', () => {
         
         document.querySelector('.btn_start').textContent = 'Start';
     });
+
+document.querySelectorAll(".form-control").forEach((element) => element.addEventListener("input", () => {
+    let minuteValue = document.querySelector("#minutes").value;
+    let secondValue = document.querySelector("#seconds").value;
+    console.log(minuteValue, secondValue);
+
+    if ((minuteValue >= 0 && minuteValue <= 60 && minuteValue !== '') || (secondValue >= 0 && secondValue <= 60 && secondValue !== '')) {
+        document.querySelector(".btn_save").disabled = false;
+        document.querySelectorAll(".is-invalid").forEach((element) => element.classList.remove("is-invalid"));
+    }
+    else {
+        document.querySelector(".btn_save").disabled = true;
+        document.querySelectorAll(".form-control").forEach((element) => element.classList.add("is-invalid"));
+    }
+}))
